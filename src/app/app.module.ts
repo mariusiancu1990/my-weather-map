@@ -8,6 +8,9 @@ import { CityListComponent } from './components/city-list/city-list.component';
 import { DetailsBoxComponent } from './components/details-box/details-box.component';
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
 import { AppComponent } from './app.component';
+import { CityItemComponent } from './components/city-item/city-item.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -16,14 +19,20 @@ import { AppComponent } from './app.component';
     DashboardComponent,
     CityListComponent,
     DetailsBoxComponent,
-    WeatherInfoComponent
+    WeatherInfoComponent,
+    CityItemComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [FaIconLibrary],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary){
+    library.addIcons(faCoffee);
+  }
+}
