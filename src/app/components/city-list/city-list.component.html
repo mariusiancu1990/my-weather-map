@@ -1,6 +1,8 @@
-<div class="row city-list">
-    <div class="col-12">
-        <app-city-item></app-city-item>
-        <app-city-item></app-city-item>
-    </div>     
+<div class="py-4">
+    <h6>Cities List:</h6>
+    <div class="row pl-2" *ngFor="let city of cities">    
+        <div class="col">
+            <app-city-item [label]="city"></app-city-item>  
+        </div>     
+    </div>   
 </div>

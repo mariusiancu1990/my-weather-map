@@ -10,7 +10,8 @@ import { WeatherInfoComponent } from './components/weather-info/weather-info.com
 import { AppComponent } from './app.component';
 import { CityItemComponent } from './components/city-item/city-item.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCity, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,13 +27,14 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [FaIconLibrary],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faCoffee);
+    library.addIcons(faCity, faPlus);
   }
 }
