@@ -121,5 +121,11 @@
       }
     }
   },
-  "defaultProject": "my-weather-map"
+  "defaultProject": "my-weather-map",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "styleext": "scss"
+    }
+  }
 }

@@ -8,7 +8,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CityListComponent } from './components/city-list/city-list.component';
 import { DetailsBoxComponent } from './components/details-box/details-box.component';
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
-
+import {FilterPipe}  from './filters';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
+import { AppState } from './state/app.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,17 @@ import { WeatherInfoComponent } from './components/weather-info/weather-info.com
     DashboardComponent,
     CityListComponent,
     DetailsBoxComponent,
-    WeatherInfoComponent
+    WeatherInfoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxsModule.forRoot([AppState], {
+      developmentMode: !environment.production
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

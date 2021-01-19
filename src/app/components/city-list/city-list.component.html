@@ -1,9 +1,24 @@
 <div class="row city-list">
     <div class="containter">
+        <ul *ngIf="edited==false" class="popup">   
+            <label for="city-search">Search City:</label>
+            <input type="search" 
+                   class="form-control" 
+                   id="search-city" 
+                   aria-describedby="search-text" 
+                   placeholder="Enter text to search" 
+                   autofocus>
+        </ul>
+        <!-- <ul>
+            <li class="list-group-item" 
+                *ngFor="let c of characters | appFilter: searchText">
+                {{c}}
+            </li>
+        </ul> -->
         <ul class="list-buttons">
             <div class="d-flex">
                 <button>home</button>
-                <span> Add new city</span>
+                <button (click)="addCity()">Add City</button>
             </div>
         </ul>
     </div>
