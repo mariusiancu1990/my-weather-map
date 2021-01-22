@@ -1,8 +1,7 @@
-<div class="py-4">
-    <h6>Cities List:</h6>
-    <div class="row pl-2" *ngFor="let item of data">    
-        <div class="col">
-            <app-city-item [label]="item.name" (click)="setSelectedCity(item)"></app-city-item>  
-        </div>     
-    </div>   
-</div>
+<h6>Cities List:</h6>
+<div class="row" *ngFor="let item of data">    
+    <div class="col">
+        <app-city-item [label]="item.name" (click)="setSelectedCity(item)"></app-city-item>  
+    </div>     
+</div>   
+

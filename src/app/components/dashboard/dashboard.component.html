@@ -12,7 +12,7 @@
       </div>     
     </div>
 
-    <app-city-list #cityList [data]="myCities$ | async" (select)="getWeatherInfo($event)"></app-city-list>
+    <app-city-list class="py-4" #cityList [data]="myCities$ | async" (select)="getWeatherInfo($event)"></app-city-list>
 
     <div class="row">
       <div class="col">
