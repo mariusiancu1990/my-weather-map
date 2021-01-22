@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.5",
-    "@angular/common": "~11.0.5",
+    "@angular/common": "^11.0.9",
     "@angular/compiler": "~11.0.5",
     "@angular/core": "~11.0.5",
     "@angular/forms": "~11.0.5",
@@ -26,7 +26,9 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@ng-bootstrap/ng-bootstrap": "^8.0.2",
+    "@ngxs/store": "^3.7.1",
     "bootstrap": "^4.5.0",
+    "immer": "^8.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

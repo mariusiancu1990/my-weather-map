@@ -1,0 +1,16 @@
+<ng-template #modalTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title">Add City</h4>
+        <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <select [(ngModel)]="selectedCity" class="custom-select">
+            <option *ngFor="let city of data; let i=index" [ngValue]="city">{{city.name}}</option>          
+        </select>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ngbAutofocus (click)="onAddButtonClick()">Add</button>
+    </div>
+</ng-template>

@@ -5,20 +5,20 @@
     
     <div class="row">
       <div class="col">       
-          <div class="btn text-white px-0" (click)="openModal(modalTemplate)">
+          <div class="btn text-white px-0" (click)="openModal()">
               <fa-icon [icon]="['fas', 'plus']" size="lg"></fa-icon>
               <label class="pl-2">Add New City</label>
           </div> 
       </div>     
     </div>
 
-    <app-city-list [cities]="myCities"></app-city-list>
+    <app-city-list #cityList [data]="myCities$ | async" (select)="getWeatherInfo($event)"></app-city-list>
 
     <div class="row">
       <div class="col">
           <div class="form-group">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" (change)="setAutoUpdate($event.target.checked)">
                 <label class="form-check-label" for="invalidCheck2">                
                   <label class="pl-2">Auto Update Per Minute</label>
                 </label>
@@ -30,25 +30,10 @@
 
   <!-- Right side component -->
   <div class="weather-info-wrapper p-3 col-xs-12 col-sm-7 col-md-8 col-lg-9">
-    <app-weather-info></app-weather-info>
-  </div>
+    <app-weather-info [data]="weatherInfo$ | async"></app-weather-info>
+  </div>  
 
-  <!-- Modal for adding new city -->
-  <ng-template #modalTemplate let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">Add City</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-        <select [(ngModel)]="selectedCityIndex" class="custom-select">
-          <option *ngFor="let city of allCities; let i=index" [ngValue]="i">{{city}}</option>          
-        </select>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" ngbAutofocus [disabled]="!canAdd()" (click)="onAddCity()">Add</button>
-    </div>
-  </ng-template>
+  <app-city-modal #cityModal [data]="allCities$ | async" (add)="addCity($event)"></app-city-modal>
+  
 </div>
   

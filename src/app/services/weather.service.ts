@@ -1,32 +1,25 @@
-import { MainWeatherInfo } from './../core/interfaces';
+import { WeatherModel } from 'src/app/models/weather.model';
+import { WeatherAdapter } from './../adapters/weather.adapter';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CityModel } from '../models/city.model';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
+  
+  private baseURL:string = 'http://api.openweathermap.org/data/2.5/weather';
+  private appID:string = 'e9ea437b2d8579ed3fcc1700cf2ee7b4';
 
-  constructor() { }
+  constructor(private http:HttpClient, private weatherAdapter:WeatherAdapter) { }
 
-  getAvailableCities():Array<string>{
-    return [
-      "London",
-      "Bucharest"
-    ]
-  }
-
-  getMainInfo():MainWeatherInfo{
-    return {
-      temp: 279.91,
-      feels_like: 275.49,
-      temp_min: 279.26,
-      temp_max: 280.37,
-      pressure: 1020,
-      humidity: 76 
-    };;
-  }
-
-  getVisibilityInfo():number{
-    return 1000
+  fetchWheatherInfo(city:CityModel):Observable<WeatherModel>{   
+    const url:string =  `${this.baseURL}?q=${city.name}&appid=${this.appID}`;
+    return this.http.get(url).pipe(
+      map((data:any)=> this.weatherAdapter.adapt(data))
+    );
   }
 }
