@@ -6,6 +6,7 @@ import { CityListComponent } from './components/city-list/city-list.component';
 import { DetailsBoxComponent } from './components/details-box/details-box.component';
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
+import { CityPopupComponent } from './components/city-popup/city-popup.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     CityListComponent,
     DetailsBoxComponent,
     WeatherInfoComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    CityPopupComponent
   ],
   imports: [
     CommonModule,
