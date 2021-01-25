@@ -1,15 +1,19 @@
 <div class="dashboard d-flex flex-wrap">
   <div class="city-list-wrapper p-3 col-xs-12 col-sm-5 col-md-4 col-lg-3">
     <div class="row">
-        <div class="col">
-          <app-add-button (click)="open()" label="Add City"></app-add-button>
+        <div class="col new-city">
+          <fa-icon [icon]="faLaptopHouse"></fa-icon>
+          <app-add-button (click)="open()" label="Add New City"></app-add-button>
+          <fa-icon [icon]="faAngleRight"></fa-icon>
         </div>
     </div>
     <app-city-list></app-city-list>
   </div>
   <div class="weather-info-wrapper p-3 col-xs-12 col-sm-7 col-md-8 col-lg-9">
     <app-weather-info></app-weather-info>
+    <div *ngFor= "let city of (data$ | async).allCities">{{city.name}}</div>
   </div>
   <app-city-popup #cityPopup></app-city-popup>
+ 
 </div>
 

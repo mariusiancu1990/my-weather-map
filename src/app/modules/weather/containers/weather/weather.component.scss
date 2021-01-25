@@ -8,6 +8,18 @@
     .city-list-wrapper {
       background-color: #2e3d4d;
       color: white;
+      .new-city{
+        display: flex;
+        flex-direction: row;
+        fa-icon{
+          font-size: 1.85;
+        }
+        app-add-button{
+          font-size: 1.85;
+          margin-left: 35px;
+          margin-right: 125px;
+        }
+      }
     }
   
     .weather-info-wrapper {

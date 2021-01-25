@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { faAngleRight, faUserSecret } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-city-list',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./city-list.component.scss']
 })
 export class CityListComponent implements OnInit {
+  faAngleRight = faAngleRight;
+  faUserSecret = faUserSecret;
   public edited: boolean;
   constructor() { }
   addCity(){

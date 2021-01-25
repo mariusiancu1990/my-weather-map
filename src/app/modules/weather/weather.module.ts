@@ -7,7 +7,10 @@ import { DetailsBoxComponent } from './components/details-box/details-box.compon
 import { WeatherInfoComponent } from './components/weather-info/weather-info.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { CityPopupComponent } from './components/city-popup/city-popup.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from 'src/environments/environment';
+import { WeatherState } from './state/weather.state';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,17 @@ import { CityPopupComponent } from './components/city-popup/city-popup.component
     DetailsBoxComponent,
     WeatherInfoComponent,
     AddButtonComponent,
-    CityPopupComponent
+    CityPopupComponent,
+    
   ],
   imports: [
     CommonModule,
     WeatherRoutingModule,
+    FontAwesomeModule,
+    NgxsModule.forRoot([WeatherState], {
+      developmentMode: !environment.production
+    })
+    
   ]
 })
 export class WeatherModule { }

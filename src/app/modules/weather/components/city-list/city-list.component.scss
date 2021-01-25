@@ -1,0 +1,15 @@
+.city-list{
+    .container{
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        fa-icon{
+            font-size: 25px;
+        }
+        p{
+            font-size: 25px;
+            margin-left: 35px;
+            margin-right: 75px;
+        }
+    }
+}
