@@ -1,0 +1,24 @@
+.weather-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .city-list-wrapper {
+    background-color: #2e3d4d;
+    color: white;
+  }
+
+  .weather-info-wrapper {
+    background-color: #f8f8f8;
+  }
+  
+  .empty-message-wrapper{
+    display:flex;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}

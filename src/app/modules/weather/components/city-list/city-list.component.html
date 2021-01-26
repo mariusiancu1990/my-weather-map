@@ -1,0 +1,25 @@
+
+<ng-template #cityList>
+    <h6>Cities List:</h6>
+    <ul class="list-group">
+        <ng-container  *ngFor="let city of data">
+            <button 
+                class="list-group-item list-group-item-action" 
+                [ngClass]="{'active': selectedCity.id === city.id }"
+                style="outline:0" 
+                (click)="setSelectedCity(city)">
+
+                <div class="d-flex w-100 align-items-center">
+                    <fa-icon [icon]="['fas', 'city']" size="lg"></fa-icon>   
+                    <div class="ml-2">{{city.name}}</div>
+                </div>
+            </button>  
+        </ng-container>  
+    </ul>
+</ng-template>
+
+<ng-template #emptyListMessage> The List Is Empty. Please Add A City. </ng-template>
+
+<ng-container *ngIf="data.length > 0 then cityList else emptyListMessage"></ng-container>
+
+

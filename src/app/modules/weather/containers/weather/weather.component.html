@@ -1,0 +1,47 @@
+<div class="weather-wrapper d-flex flex-wrap">
+
+    <!-- Left side component -->
+    <div class="city-list-wrapper p-3 col-xs-12 col-sm-5 col-md-4 col-lg-3">
+      <div class="row">
+        <div class="col">       
+            <div class="btn text-white px-0" (click)="onAddCityClickHandler()">
+                <fa-icon [icon]="['fas', 'plus']" size="lg"></fa-icon>
+                <label class="pl-2">Add New City</label>
+            </div> 
+        </div>     
+      </div>
+      <app-city-list class="py-4" #cityList [data]="(data$ | async).myCities" (select)="onCitySelectHandler($event)"></app-city-list>
+      <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" (change)="onAUPMValueChangeHandler($event.target.checked)">
+                  <label class="form-check-label" for="invalidCheck2">                
+                    <label class="pl-2">Auto Update Per Minute</label>
+                  </label>
+                </div>
+              </div>
+        </div>     
+      </div>
+    </div>
+  
+    <!-- Right side component -->
+    <div class="weather-info-wrapper p-3 col-xs-12 col-sm-7 col-md-8 col-lg-9">
+      <ng-container *ngIf="(data$ | async).weatherInfo === undefined then emptyMessage else weatherInfoContent"></ng-container>
+    </div>  
+  
+    <app-city-modal #cityModal [data]="(data$ | async).allCities" (add)="onCityAddHandler($event)"></app-city-modal>
+    
+</div>
+
+<ng-template #weatherInfoContent> 
+  <H1>{{cityListComponent.getSelectedCity().name}}</H1>
+  <app-weather-info [data]="(data$ | async).weatherInfo"></app-weather-info>
+</ng-template>
+
+<ng-template #emptyMessage>
+  <div class="empty-message-wrapper">
+    No Information Available
+  </div>
+</ng-template>
+    

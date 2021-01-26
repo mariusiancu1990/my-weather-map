@@ -1,0 +1,59 @@
+<ng-template #cardTemplate let-value="value" let-name="name">
+    <div class="col-xs-12 col-lg-4 pb-2">
+        <div class="card weather-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-9">
+                        <h5>{{value}}</h5>
+                        <p>{{name}}</p> 
+                    </div>
+                    <div class="col">
+                        <fa-icon [icon]="['fas', 'minus']" size="lg"></fa-icon>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class="row">
+    <div class="col-lg-12 col-xl-9 pt-2">
+        <div class="row">
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getWindContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getVisibilityContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getTemperatureContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getFeelsLikeContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getMinTemperatureContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getMaxTemperatureContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getPressureContext()"></ng-container>
+            <ng-container *ngTemplateOutlet="cardTemplate; context:getHumidityContext()"></ng-container>
+        </div>
+    </div>
+    <div class="col pt-2">
+        <div class="card">
+            <div class="card-header">Details</div>
+            <div class="card-body">
+                <div>
+                    <h6>General:</h6>  
+                    <p>Updated At: {{ data.general.updateTime }}</p>
+                    <p>Sunrise: {{ data.general.sunrise }}</p>
+                    <p>Sunset: {{ data.general.sunrise }}</p>
+                    <p>Timezone: {{ data.general.timezone }}</p>
+                </div>
+                <hr>
+                <div>
+                    <h6>Coordinates:</h6>  
+                    <p>Longitude: {{ data.coordinates.longitude }}</p>
+                    <p>Latitude: {{ data.coordinates.latitude }}</p>
+                </div>
+                <hr>
+                <div>
+                    <h6>Weather:</h6>  
+                    <p>Clouds: {{ data.clouds.value }}%</p>
+                    <p>Broken clouds</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
