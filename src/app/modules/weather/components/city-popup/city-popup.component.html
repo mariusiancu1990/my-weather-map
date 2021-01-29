@@ -6,9 +6,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <!-- <input type="search"  [(ngModel)]="search" placeholder="Search City"> -->
+    <input type="text" placeholder="name" #name />
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" >Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)='addCity(name.value)'>Add</button>
   </div>
 </ng-template>

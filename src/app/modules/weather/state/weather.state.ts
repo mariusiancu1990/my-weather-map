@@ -1,37 +1,32 @@
 import { Injectable } from "@angular/core";
-import { Action, State, StateContext, Store } from "@ngxs/store";
+import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { AddCity } from "../actions/weather.actions";
-import { WeatherModel } from "../models/weather.model";
+import { CityModel } from "../models/city.model";
 
 
-
-@State<WeatherModel>({
+export class CityStateModel {
+    weather: CityModel[]
+}
+@State<CityStateModel>({
     name: 'weather',
     defaults: {
-        allCities: [
-            {
-                id:1, name: "Bucharest"
-            },
-            {
-                id:2, name: "London"
-            },
-            {
-                id:3, name: "Budapest"
-            }
-        ],
-        myCities:[]
+        weather: []
     },
 
 })
 
 @Injectable()
 export class WeatherState{
+    @Selector()
+    static getWeather(state: CityStateModel) {
+        return state.weather
+    }
+
     @Action(AddCity)
-    addCity(ctx: StateContext<WeatherModel>, action: AddCity){
-        const state =  ctx.getState();
-        ctx.setState({
-            ...state,
-            myCities: [action.city]
+    add({ getState, patchState }: StateContext<CityStateModel>, { city }: AddCity) {
+        const state = getState();
+        patchState({
+            weather: [...state.weather, city]
         })
     }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngxs/store';
+import { AddCity } from '../../actions/weather.actions';
 
 @Component({
   selector: 'app-city-popup',
@@ -9,11 +11,12 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class CityPopupComponent implements OnInit {
+  
   @ViewChild('popup')
   templateRef: TemplateRef<CityPopupComponent>;
   popupRef: NgbModalRef;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal, private store: Store) {}
 
   ngOnInit(): void {}
 
@@ -27,5 +30,10 @@ export class CityPopupComponent implements OnInit {
 
   dismiss() {
     this.popupRef.dismiss();
+  }
+ 
+  addCity(name){
+    this.store.dispatch(new AddCity({name:name}));
+    console.log(name)
   }
 }

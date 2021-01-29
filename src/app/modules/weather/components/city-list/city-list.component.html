@@ -1,7 +1,7 @@
-<div class="row city-list">
-    <div class="container">
+<div class="row city-list" *ngIf="city$">
+    <div class="container" *ngFor="let weather of city$ | async">
         <fa-icon [icon]="faUserSecret"></fa-icon>
-        <p>Bucharest</p>
+        <p (click)="sayCountry(weather.name)">{{weather.name}}</p>
         <fa-icon [icon]="faAngleRight"></fa-icon>
     </div>
 </div>
